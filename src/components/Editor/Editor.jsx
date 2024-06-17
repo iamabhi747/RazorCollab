@@ -10,7 +10,7 @@ const Editor = () => {
     const [value, setValue] = useState()
   return (
     <div>
-      <CodeMirror
+      <CodeMirror className='text-2xl'
         value = {value}
         options={{
           mode: 'markdown',
@@ -19,10 +19,6 @@ const Editor = () => {
           autoCloseTags: true,
           lineNumbers: true
         }}
-        cursor={{
-            line: 1,
-            ch: 0
-          }}
         onChange={(editor, data, value) => {
 
         }}
