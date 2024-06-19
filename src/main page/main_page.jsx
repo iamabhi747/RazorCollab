@@ -34,12 +34,6 @@ function App() {
                         </a>
                     </li>
 
-                    <li>
-                        <a href="#">
-                            <i className="fas fa-clock"></i>
-                            <span>Recent</span>
-                        </a>
-                    </li>
                 </ul>
                 <button className="toggle-sidebar" onClick={toggleSidebar}>
                     <i className={`fas ${isSidebarOpen ? 'fa-chevron-left' : 'fa-chevron-right'}`}></i>
@@ -56,23 +50,7 @@ function App() {
                             <i className="fas fa-plus"></i>
                             <span>New note</span>
                         </button>
-                        <div className="dropdown">
-                            <button className="dropdown-toggle">
-                                <i className="fas fa-tags"></i>
-                                <span>Tags</span>
-                            </button>
-                            <ul className="dropdown-menu">
-                                <li>
-                                    <a href="#">Tag 1</a>
-                                </li>
-                                <li>
-                                    <a href="#">Tag 2</a>
-                                </li>
-                                <li>
-                                    <a href="#">Tag 3</a>
-                                </li>
-                            </ul>
-                        </div>
+
                         <div className="dropdown">
                             <button className="dropdown-toggle">
                                 <i className="fas fa-th-large"></i>
