@@ -1,88 +1,65 @@
 import React, { useState } from 'react';
 
 function App() {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+    const [notes, setNotes] = useState([]);
+    const [newNote, setNewNote] = useState('');
 
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
+    const handleNewNoteChange = (event) => {
+        setNewNote(event.target.value);
+    };
+
+    const addNote = () => {
+        setNotes([...notes, { id: Date.now(), content: newNote }]);
+        setNewNote('');
     };
 
     return (
-        <div className="app">
-            <div className={`sidebar ${isSidebarOpen ? 'open' : 'closed'}`}>
-                <div className="user-info">
-                    <img src="https://example.com/user-avatar.png" alt="User Avatar" />
-                    <span>Atharva Kavade</span>
-                </div>
-                <ul className="sidebar-menu">
-                    <li>
-                        <a href="#">
-                            <i className="fas fa-home"></i>
-                            <span>My Workspace</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i className="fas fa-file-alt"></i>
-                            <span>My Notes</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i className="fas fa-users"></i>
-                            <span>Collaborative Notes</span>
-                        </a>
-                    </li>
-
-                </ul>
-                <button className="toggle-sidebar" onClick={toggleSidebar}>
-                    <i className={`fas ${isSidebarOpen ? 'fa-chevron-left' : 'fa-chevron-right'}`}></i>
+        <div style={{ display: 'flex', height: '100vh', backgroundColor: '#222', color: '#fff', fontFamily: 'ans-serif' }}>
+            <div style={{ width: 250, padding: 20, backgroundColor: '#333' }}>
+                <h1 style={{ marginBottom: 10 }}>My Workspace</h1>
+                <input type="text" placeholder="Search keyword or tag..." style={{ width: '100%', padding: 10, marginBottom: 20 }} />
+                <button onClick={addNote} style={{ backgroundColor: '#4CAF50', color: '#fff', padding: 10, borderRadius: 5, cursor: 'pointer' }}>
+                    New note
                 </button>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                    <li>My Notes</li>
+                    <li>Collaborative Notes</li>
+                    <li>My trash</li>
+                    <li>Tags</li>
+                    <li>Bookmark</li>
+                    <li>Recent</li>
+                </ul>
+                <div style={{ display: 'flex', alignItems: 'center', marginTop: 20 }}>
+                    <img src="https://via.placeholder.com/50" alt="User" style={{ width: 50, height: 50, borderRadius: '50%' }} />
+                    <span style={{ marginLeft: 10 }}>Atharva Kavade</span>
+                </div>
             </div>
-            <div className="content">
-                <div className="header">
-                    <div className="search-bar">
-                        <i className="fas fa-search"></i>
-                        <input type="text" placeholder="Search keyword or tag..." />
+            <div style={{ flex: 1, padding: 20 }}>
+                <div style={{ display: 'flex', justifyContent: 'pace-between', alignItems: 'center', marginBottom: 20 }}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <label htmlFor="tags" style={{ marginRight: 10 }}>Tags</label>
+                        <select id="tags" style={{ padding: 10, borderRadius: 5 }}>
+                            <option value="">All</option>
+                            {/* Add your tags here */}
+                        </select>
                     </div>
-                    <div className="options">
-                        <button className="new-note" onClick={() => alert('Create new note')}>
-                            <i className="fas fa-plus"></i>
-                            <span>New note</span>
-                        </button>
-
-                        <div className="dropdown">
-                            <button className="dropdown-toggle">
-                                <i className="fas fa-th-large"></i>
-                                <span>Layout</span>
-                            </button>
-                            <ul className="dropdown-menu">
-                                <li>
-                                    <a href="#">Layout 1</a>
-                                </li>
-                                <li>
-                                    <a href="#">Layout 2</a>
-                                </li>
-                                <li>
-                                    <a href="#">Layout 3</a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <label htmlFor="layout" style={{ marginRight: 10 }}>Layout</label>
+                        <select id="layout" style={{ padding: 10, borderRadius: 5 }}>
+                            <option value="">Default</option>
+                            {/* Add your layout options here */}
+                        </select>
                     </div>
                 </div>
-                <div className="main-content">
-                    <div className="note-container">
-                        <div className="note-header">
-                            <i className="fas fa-pencil-alt"></i>
-
-                        </div>
-                        <div className="note-actions">
-                            <button className="create-new-note" onClick={() => alert('Create new note')}>
-                                Create new note
-                            </button>
-
-                        </div>
-                    </div>
+                <div>
+                    <h2 style={{ marginBottom: 20 }}>Start writing and share your thoughts with a note!</h2>
+                    <button style={{ backgroundColor: '#4CAF50', color: '#fff', padding: 10, borderRadius: 5, cursor: 'pointer', marginRight: 10 }}>
+                        Create new note
+                    </button>
+                    <button style={{ backgroundColor: '#4CAF50', color: '#fff', padding: 10, borderRadius: 5, cursor: 'pointer' }}>
+                        Tutorials Book
+                    </button>
+                    {/* Display your notes here */}
                 </div>
             </div>
         </div>
