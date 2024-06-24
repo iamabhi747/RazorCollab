@@ -5,6 +5,9 @@ exports.type = "token"; // token, ast, ignore
 
 exports.rule = /(.)/;
 
+// exports.css = `
+// `;
+
 exports.resolver = function sample (context, groups) {
     return groups.toString();
 }

@@ -3,8 +3,14 @@ const Tokenizr = require('tokenizr');
 const { resolveTokens } = require('./resolveTokens');
 let DEBUG = true;
 
+let css_element = document.createElement('style');
+css_element.id = 'code2markdown-css';
+window.onload = () => {
+    document.head.appendChild(css_element);
+}
+
 export let lexer = new Tokenizr();
-const resolvers = loadRules(lexer);
+const resolvers = loadRules(lexer, css_element);
 if (DEBUG) console.log('Resolvers:', resolvers);
 
 
