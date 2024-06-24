@@ -3,10 +3,89 @@
   <head>
     <title>Test</title>
     <script src="../build/code2markdown.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simply-beautiful@latest/dist/index.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-areas: 
+                "e p"
+                "r p";
+            grid-template-columns: 40% 60%;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .container > div {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #000;
+            padding: 10px;
+            overflow: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .text_editor { grid-area: e; }
+        .markdown_raw { grid-area: r; }
+        .markdown_priview { grid-area: p; }
+
+        textarea {
+            height: 100%;
+            resize: none;
+            margin: 0;
+        }
+        #preview {
+            height: 100%;
+            overflow: auto;
+        }
+    </style>
   </head>
   <body>
+    <div class="container">
+        <div class="text_editor">
+            <div>
+                <label for="edit_text">Editor</label>
+                <button id="convert">Convert</button>
+                <button id="clear">Clear</button>
+            </div>
+            <textarea name="text" id="edit_text"></textarea>
+        </div>
+        <div class="markdown_raw">
+            <label for="raw_text">Raw Markdown</label>
+            <textarea name="text" id="raw_text" disabled></textarea>
+        </div>
+        <div class="markdown_priview">
+            <label for="preview">Markdown Preview<hr></label>
+            <div id="preview"></div>
+        </div>
+    </div>
     <script>
-        // run code here
+        const editor = document.getElementById('edit_text');
+        const raw = document.getElementById('raw_text');
+        const preview = document.getElementById('preview');
+        const convert = document.getElementById('convert');
+        const clear = document.getElementById('clear');
+        var beautify = SimplyBeautiful();
+        const beautify_options = {
+            indent_size: 2
+        };
+
+        convert.addEventListener('click', () => {
+            const text = editor.value;
+            const markdown = code2markdown.convert(text);
+            raw.value = beautify.html(markdown, beautify_options);
+            preview.innerHTML = markdown;
+        });
+
+        clear.addEventListener('click', () => {
+            editor.value = '';
+            raw.value = '';
+            preview.innerHTML = '';
+        });
     </script>
   </body>
 </html>
