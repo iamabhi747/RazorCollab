@@ -11,4 +11,9 @@ module.exports = {
     },
   },
   mode: "development",
+  devtool: 'inline-source-map',
+  devServer: {
+    static: ['./build', './test'],
+    port: 9000
+  },
 };
