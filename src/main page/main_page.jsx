@@ -1,17 +1,22 @@
 import React from 'react';
-import { FaBell, FaSearch, FaPlus, FaTrash, FaTags, FaBookmark, FaClock, FaUser, FaQuestionCircle, FaLock, FaUsers } from 'react-icons/fa';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { FaPlus, FaLock, FaUserCircle, FaTrashAlt, FaTags, FaBookmark, FaClock } from 'react-icons/fa';
+import { IoMdNotificationsOutline } from 'react-icons/io';
+import newNote from '../new-note/new-note';
+import collaborativeNotes from '../collaborative_notes/collaborative_notes';
+import myNote from '../my-notes/my-notes';
+import myTrash from '../my-trash/my-trash';
 
 function App() {
     const styles = {
-        app: {
+        container: {
             display: 'flex',
             height: '100vh',
             fontFamily: 'Arial, sans-serif',
-            margin: 0,
         },
         sidebar: {
             width: '250px',
-            backgroundColor: '#333',
+            backgroundColor: '#2e2e2e',
             color: '#fff',
             display: 'flex',
             flexDirection: 'column',
@@ -19,91 +24,65 @@ function App() {
         },
         sidebarHeader: {
             display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: '20px',
+        },
+        sidebarSection: {
+            display: 'flex',
+            flexDirection: 'column',
+            marginBottom: '20px',
+        },
+        sidebarItem: {
+            display: 'flex',
+            alignItems: 'center',
+            padding: '10px 15px',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            marginBottom: '5px',
+            color: '#b1b1b1',
+            textDecoration: 'none',
+        },
+        sidebarItemSelected: {
+            backgroundColor: '#3a3a3a',
+            color: '#fff',
+        },
+        sidebarIcon: {
+            marginRight: '10px',
+        },
+        content: {
+            flexGrow: 1,
+            padding: '20px',
+            backgroundColor: '#333',
+            color: '#fff',
+        },
+        workspaceContainer: {
+            padding: '20px',
+        },
+        workspaceHeader: {
+            display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            paddingBottom: '10px',
-            borderBottom: '1px solid #444',
+            marginBottom: '20px',
         },
-        profile: {
-            display: 'flex',
-            alignItems: 'center',
-        },
-        profileIcon: {
-            marginRight: '5px',
-        },
-        notificationIcon: {
-            color: '#f00',
-        },
-        searchBar: {
-            display: 'flex',
-            alignItems: 'center',
-            margin: '10px 0',
-        },
-        searchIcon: {
-            marginRight: '5px',
-        },
-        searchInput: {
-            width: '100%',
-            padding: '5px',
+        workspaceContent: {
             backgroundColor: '#444',
-            border: 'none',
-            color: '#fff',
+            borderRadius: '8px',
+            padding: '20px',
+            textAlign: 'center',
         },
-        newNoteButton: {
-            backgroundColor: '#3a3',
+        button: {
+            backgroundColor: '#28a745',
             border: 'none',
-            color: '#fff',
-            padding: '10px',
-            margin: '10px 0',
-            display: 'flex',
-            alignItems: 'center',
+            color: 'white',
+            padding: '10px 20px',
+            textAlign: 'center',
+            textDecoration: 'none',
+            display: 'inline-block',
+            fontSize: '16px',
+            margin: '10px 2px',
+            borderRadius: '4px',
             cursor: 'pointer',
-        },
-        plusIcon: {
-            marginRight: '5px',
-        },
-        usersIcon: {
-            marginRight: '5px',
-        },
-        lockIcon: {
-            marginRight: '5px',
-        },
-        menu: {
-            listStyleType: 'none',
-            padding: 0,
-        },
-        menuItem: {
-            padding: '10px 0',
-            display: 'flex',
-            alignItems: 'center',
-        },
-        menuIcon: {
-            marginRight: '10px',
-        },
-        upgrade: {
-            color: '#0f0',
-        },
-        tagsSection: {
-            display: 'flex',
-            alignItems: 'center',
-            margin: '10px 0',
-        },
-        tagsIcon: {
-            marginRight: '10px',
-        },
-        userSection: {
-            marginTop: 'auto',
-            display: 'flex',
-            alignItems: 'center',
-        },
-        profilePic: {
-            width: '30px',
-            height: '30px',
-            borderRadius: '50%',
-            marginRight: '10px',
-        },
-        questionIcon: {
-            marginLeft: 'auto',
         },
         main: {
             flex: 1,
@@ -146,69 +125,73 @@ function App() {
             margin: '10px',
             cursor: 'pointer',
         },
+
     };
 
     return (
-        <div style={styles.app}>
-            <div style={styles.sidebar}>
-                <div style={styles.sidebarHeader}>
-                    <div style={styles.profile}>
-                        <FaUser style={styles.profileIcon} />
-                        <span>My Workspace</span>
+        <Router>
+            <div style={styles.container}>
+                <div style={styles.sidebar}>
+                    <div style={styles.sidebarHeader}>
+                        <div>My Workspace</div>
+                        <IoMdNotificationsOutline />
                     </div>
-                    <FaBell style={styles.notificationIcon} />
-                </div>
-                <div style={styles.searchBar}>
-                    <FaSearch style={styles.searchIcon} />
-                    <input type="text" placeholder="Search keyword or tag..." style={styles.searchInput} />
-                </div>
-                <button style={styles.newNoteButton}>
-                    <FaPlus style={styles.plusIcon} />
-                    New note
-                </button>
-                <ul style={styles.menu}>
-                    <li style={styles.menuItem}>
-                        <FaLock style={styles.lockIcon} />
-                        My Notes
-                    </li>
-                    <li style={styles.menuItem}>
-                        <FaUsers style={styles.usersIcon} />
-                        Collaborative Notes
-                    </li>
-                    <li style={styles.menuItem}>
-                        <FaTrash style={styles.menuIcon} />
-                        My trash
-                    </li>
-                    <li style={styles.menuItem}>
-                        <FaBookmark style={styles.menuIcon} />
-                        Bookmark
-                    </li>
-                    <li style={styles.menuItem}>
-                        <FaClock style={styles.menuIcon} />
-                        Recent
-                    </li>
-                </ul>
-                <div style={styles.userSection}>
-                    <img src="profile-pic-url" alt="profile" style={styles.profilePic} />
-                    <span>Atharva Kavade</span>
-                    <FaQuestionCircle style={styles.questionIcon} />
-                </div>
-            </div>
-            <div style={styles.main}>
-                <div style={styles.mainHeader}>
-                    <button style={styles.dropdownButton}>Tags</button>
-                    <button style={styles.dropdownButton}>Layout</button>
-                </div>
-                <div style={styles.mainContent}>
-                    <div style={styles.welcomeMessage}>
-                        <img src="note-icon-url" alt="note icon" style={styles.noteIcon} />
-                        <p>Start writing and share your thoughts with a note!</p>
-                        <button style={styles.actionButton}>Create new note</button>
-                        <button style={styles.actionButton}>Tutorials Book</button>
+                    <div style={styles.sidebarSection}>
+                        <Link to="src/new-note/new-note.jsx" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
+                            <FaPlus style={styles.sidebarIcon} />
+                            New note
+                        </Link>
+                        <Link to="src/my-notes/my-notes.jsx" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
+                            <FaLock style={styles.sidebarIcon} />
+                            My Notes
+                        </Link>
+                        <Link to="src/collaborative_notes/collaborative_notes.jsx" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
+                            <FaUserCircle style={styles.sidebarIcon} />
+                            Collaborative Notes
+                        </Link>
+                        <Link to="src/my-trash/my-trash.jsx" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
+                            <FaTrashAlt style={styles.sidebarIcon} />
+                            My trash
+                        </Link>
+                    </div>
+                    <div style={styles.sidebarItem}>
+                        <img src="profile.jpg" alt="Atharva Kavade" style={{ borderRadius: '50%', width: '30px', marginRight: '10px' }} />
+                        Atharva Kavade
                     </div>
                 </div>
+                <div style={styles.content}>
+                    <Switch>
+                        <Route path="src/new-note/new-note.jsx" component={newNote} />
+                        <Route path="src/my-notes/my-notes.jsx" component={myNote} />
+                        <Route path="src/my-trash/my-trash.jsx" component={myTrash} />
+                        <Route path="src/collaborative_notes/collaborative_notes.jsx" component={collaborativeNotes} />
+                        <Route path="/" exact>
+                            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                                <h1>Welcome to My Workspace</h1>
+                            </div>
+                        </Route>
+                    </Switch>
+                </div>
+                {/* Workspace */}
+                <div style={styles.main}>
+                    <div style={styles.mainHeader}>
+                        <button style={styles.dropdownButton}>
+                            <FaTags style={styles.sidebarIcon} />
+                            Tags
+                        </button>
+                        <button style={styles.dropdownButton}>Layout</button>
+                    </div>
+                    <div style={styles.mainContent}>
+                        <div style={styles.welcomeMessage}>
+                            <img src="note-icon-url" alt="note icon" style={styles.noteIcon} />
+                            <p>Start writing and share your thoughts with a note!</p>
+                            <button style={styles.actionButton}>Create new note</button>
+                            <button style={styles.actionButton}>Tutorials Book</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </Router>
     );
 }
 
