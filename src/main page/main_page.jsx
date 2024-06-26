@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import { FaPlus, FaLock, FaUserCircle, FaTrashAlt, FaTags, FaBookmark, FaClock } from 'react-icons/fa';
+import { FaPlus, FaLock, FaUserCircle, FaTrashAlt, FaTags } from 'react-icons/fa';
 import { IoMdNotificationsOutline } from 'react-icons/io';
-import newNote from '../new-note/new-note';
-import collaborativeNotes from '../collaborative_notes/collaborative_notes';
-import myNote from '../my-notes/my-notes';
-import myTrash from '../my-trash/my-trash';
+import NewNote from '../new-note/new-note';
+import CollaborativeNotes from '../collaborative_notes/collaborative_notes';
+import MyNote from '../my-notes/my-notes';
+import MyTrash from '../my-trash/my-trash';
 
 function App() {
     const styles = {
@@ -137,19 +137,19 @@ function App() {
                         <IoMdNotificationsOutline />
                     </div>
                     <div style={styles.sidebarSection}>
-                        <Link to="src/new-note/new-note.jsx" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
+                        <Link to="/new-note" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
                             <FaPlus style={styles.sidebarIcon} />
                             New note
                         </Link>
-                        <Link to="src/my-notes/my-notes.jsx" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
+                        <Link to="/my-notes" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
                             <FaLock style={styles.sidebarIcon} />
                             My Notes
                         </Link>
-                        <Link to="src/collaborative_notes/collaborative_notes.jsx" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
+                        <Link to="/collaborative-notes" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
                             <FaUserCircle style={styles.sidebarIcon} />
                             Collaborative Notes
                         </Link>
-                        <Link to="src/my-trash/my-trash.jsx" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
+                        <Link to="/my-trash" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
                             <FaTrashAlt style={styles.sidebarIcon} />
                             My trash
                         </Link>
@@ -161,15 +161,15 @@ function App() {
                 </div>
                 <div style={styles.content}>
                     <Routes>
-                        <Route path="src/new-note/new-note.jsx" component={newNote} />
-                        <Route path="src/my-notes/my-notes.jsx" component={myNote} />
-                        <Route path="src/my-trash/my-trash.jsx" component={myTrash} />
-                        <Route path="src/collaborative_notes/collaborative_notes.jsx" component={collaborativeNotes} />
-                        <Route path="/" exact>
+                        <Route path="/new-note" element={<NewNote />} />
+                        <Route path="/my-notes" element={<MyNote />} />
+                        <Route path="/my-trash" element={<MyTrash />} />
+                        <Route path="/collaborative-notes" element={<CollaborativeNotes />} />
+                        <Route path="/" element={
                             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
                                 <h1>Welcome to My Workspace</h1>
                             </div>
-                        </Route>
+                        } />
                     </Routes>
                 </div>
                 {/* Workspace */}
