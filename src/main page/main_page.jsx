@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { FaPlus, FaLock, FaUserCircle, FaTrashAlt, FaTags, FaBookmark, FaClock } from 'react-icons/fa';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import newNote from '../new-note/new-note';
@@ -160,7 +160,7 @@ function App() {
                     </div>
                 </div>
                 <div style={styles.content}>
-                    <Switch>
+                    <Routes>
                         <Route path="src/new-note/new-note.jsx" component={newNote} />
                         <Route path="src/my-notes/my-notes.jsx" component={myNote} />
                         <Route path="src/my-trash/my-trash.jsx" component={myTrash} />
@@ -170,7 +170,7 @@ function App() {
                                 <h1>Welcome to My Workspace</h1>
                             </div>
                         </Route>
-                    </Switch>
+                    </Routes>
                 </div>
                 {/* Workspace */}
                 <div style={styles.main}>
