@@ -1,6 +1,6 @@
 module.exports = exports = {};
 module.order=100;
-exports.type = "link";
+exports.type = "token";
 
 exports.rule = /\[([^\]]+)\]\(([^)]+)\)/;
 
