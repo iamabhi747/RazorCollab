@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import { FaPlus, FaLock, FaUserCircle, FaTrashAlt, FaTags } from 'react-icons/fa';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import NewNote from '../new-note/new-note';
@@ -56,34 +56,6 @@ function App() {
             backgroundColor: '#333',
             color: '#fff',
         },
-        workspaceContainer: {
-            padding: '20px',
-        },
-        workspaceHeader: {
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginBottom: '20px',
-        },
-        workspaceContent: {
-            backgroundColor: '#444',
-            borderRadius: '8px',
-            padding: '20px',
-            textAlign: 'center',
-        },
-        button: {
-            backgroundColor: '#28a745',
-            border: 'none',
-            color: 'white',
-            padding: '10px 20px',
-            textAlign: 'center',
-            textDecoration: 'none',
-            display: 'inline-block',
-            fontSize: '16px',
-            margin: '10px 2px',
-            borderRadius: '4px',
-            cursor: 'pointer',
-        },
         main: {
             flex: 1,
             backgroundColor: '#444',
@@ -118,13 +90,19 @@ function App() {
             height: '50px',
         },
         actionButton: {
-            backgroundColor: '#3a3',
+            backgroundColor: '#28a745',
             border: 'none',
             color: '#fff',
             padding: '10px',
             margin: '10px',
             cursor: 'pointer',
+            borderRadius: '4px',
         },
+        profileImage: {
+            borderRadius: '50%',
+            width: '30px',
+            marginRight: '10px',
+        }
 
     };
 
@@ -137,25 +115,25 @@ function App() {
                         <IoMdNotificationsOutline />
                     </div>
                     <div style={styles.sidebarSection}>
-                        <Link to="/new-note" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
+                        <NavLink to="/new-note" style={({ isActive }) => ({ ...styles.sidebarItem, ...(isActive ? styles.sidebarItemSelected : {}) })}>
                             <FaPlus style={styles.sidebarIcon} />
-                            New note
-                        </Link>
-                        <Link to="/my-notes" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
+                            New Note
+                        </NavLink>
+                        <NavLink to="/my-notes" style={({ isActive }) => ({ ...styles.sidebarItem, ...(isActive ? styles.sidebarItemSelected : {}) })}>
                             <FaLock style={styles.sidebarIcon} />
                             My Notes
-                        </Link>
-                        <Link to="/collaborative-notes" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
+                        </NavLink>
+                        <NavLink to="/collaborative-notes" style={({ isActive }) => ({ ...styles.sidebarItem, ...(isActive ? styles.sidebarItemSelected : {}) })}>
                             <FaUserCircle style={styles.sidebarIcon} />
                             Collaborative Notes
-                        </Link>
-                        <Link to="/my-trash" style={{ ...styles.sidebarItem, ...styles.sidebarItemSelected }}>
+                        </NavLink>
+                        <NavLink to="/my-trash" style={({ isActive }) => ({ ...styles.sidebarItem, ...(isActive ? styles.sidebarItemSelected : {}) })}>
                             <FaTrashAlt style={styles.sidebarIcon} />
-                            My trash
-                        </Link>
+                            My Trash
+                        </NavLink>
                     </div>
                     <div style={styles.sidebarItem}>
-                        <img src="profile.jpg" alt="Atharva Kavade" style={{ borderRadius: '50%', width: '30px', marginRight: '10px' }} />
+                        <img src="profile.jpg" alt="Atharva Kavade" style={styles.profileImage} />
                         Atharva Kavade
                     </div>
                 </div>
@@ -172,7 +150,6 @@ function App() {
                         } />
                     </Routes>
                 </div>
-                {/* Workspace */}
                 <div style={styles.main}>
                     <div style={styles.mainHeader}>
                         <button style={styles.dropdownButton}>
@@ -183,10 +160,9 @@ function App() {
                     </div>
                     <div style={styles.mainContent}>
                         <div style={styles.welcomeMessage}>
-                            <img src="note-icon-url" alt="note icon" style={styles.noteIcon} />
+                            <img src="https://i.pinimg.com/564x/1e/6c/ae/1e6cae8d53ac733a14560cb87fafd068.jpg" alt="note icon" style={styles.noteIcon} />
                             <p>Start writing and share your thoughts with a note!</p>
                             <button style={styles.actionButton}>Create new note</button>
-                            <button style={styles.actionButton}>Tutorials Book</button>
                         </div>
                     </div>
                 </div>
