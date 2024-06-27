@@ -1,6 +1,6 @@
 module.exports = exports = {};
 module.order=100;
-exports.type = "icon";
+exports.type = "token";
 
 
 exports.rule = /\[fa-([^\]]+)\]/;
