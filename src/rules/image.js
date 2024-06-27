@@ -1,12 +1,12 @@
 module.exports = exports = {};
 
-exports.type = "image";
+exports.type = "token";
 
-exports.rule = ``;
+exports.rule = /!\[(.*?)\]\((.*?)\)/;
 
 exports.resolver = function createImage(context, groups) {
-    let altText = groups[1];
-    let url = groups[2];
+    let altText = groups[0];
+    let url = groups[1];
 
     return `<img src="${url}" alt="${altText}" />`;
 };
