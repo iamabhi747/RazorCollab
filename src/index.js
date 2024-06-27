@@ -7,6 +7,17 @@ let css_element = document.createElement('style');
 css_element.id = 'code2markdown-css';
 window.onload = () => {
     document.head.appendChild(css_element);
+
+    let css = `
+    .c2m {
+        background-color: #515151;
+        color: white;
+        margin: 0;
+        padding: 10px 20px;
+    }
+    `;
+
+    css_element.innerHTML += css;
 }
 
 export let lexer = new Tokenizr();
