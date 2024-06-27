@@ -1,12 +1,11 @@
-module.exports = exports ={};
+module.exports = {
+    type: "token",
+    rule: /\r?\n|\r/,
+    resolver: function LineBreak(context, groups) {
+        // Although not used, context and groups are included for interface consistency
+        return `<br>`;
+    }
+};
 
-exports.type={token};
-
-exports.rule= /\n?\r?/;
-
-exports.resolver= function LineBreak(context,groups)
-{
-    return `<br>`;
-}
 
 
