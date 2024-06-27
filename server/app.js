@@ -3,7 +3,7 @@ const app = express();
 import { createServer } from 'http';
 import { join } from 'path';
 import { Server } from 'socket.io';
-import { JOIN, JOINED, CODE_CHANGE, SYNC_CODE, DISCONNECTED } from '../src/Actions.js';
+import ACTIONS from '../src/Actions.js';
 
 const server = createServer(app);
 const io = new Server(server);
@@ -29,12 +29,12 @@ function getAllConnectedClients(roomId) {
 io.on('connection', (socket) => {
     console.log('socket connected', socket.id);
 
-    socket.on(JOIN, ({ roomId, username }) => {
+    socket.on(ACTIONS.JOIN, ({ roomId, username }) => {
         userSocketMap[socket.id] = username;
         socket.join(roomId);
         const clients = getAllConnectedClients(roomId);
         clients.forEach(({ socketId }) => {
-            io.to(socketId).emit(JOINED, {
+            io.to(socketId).emit(ACTIONS.JOINED, {
                 clients,
                 username,
                 socketId: socket.id,
@@ -42,18 +42,18 @@ io.on('connection', (socket) => {
         });
     });
 
-    socket.on(CODE_CHANGE, ({ roomId, code }) => {
+    socket.on(ACTIONS.CODE_CHANGE, ({ roomId, code }) => {
         socket.in(roomId).emit(CODE_CHANGE, { code });
     });
 
-    socket.on(SYNC_CODE, ({ socketId, code }) => {
+    socket.on(ACTIONS.SYNC_CODE, ({ socketId, code }) => {
         io.to(socketId).emit(CODE_CHANGE, { code });
     });
 
     socket.on('disconnecting', () => {
         const rooms = [...socket.rooms];
         rooms.forEach((roomId) => {
-            socket.in(roomId).emit(DISCONNECTED, {
+            socket.in(roomId).emit(ACTIONS.DISCONNECTED, {
                 socketId: socket.id,
                 username: userSocketMap[socket.id],
             });
