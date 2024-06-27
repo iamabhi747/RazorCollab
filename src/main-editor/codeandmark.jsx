@@ -5,7 +5,7 @@ import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material-darker.css';
 import 'codemirror/mode/markdown/markdown';
 
-const App = () => {
+const CodeToMark = () => {
     const [markdown, setMarkdown] = useState(`# **Summer Project: Overview**\n---\n<br/>\n## Development phase starts 20th June\n1. Abhi = 'Backend' + 'Code to Markdown'\n2. Atharva = 'react'\n3. Devraj = 'Editor'\n4. Pranav and Anushka = 'learning'\n---\n<br/>\n### GitHub Repo: [RazorCollab](https://github.com/iamabhi747/RazorCollab)\n---\n<br/>\n## Detailed Developer Notes\n- [Project Structure](http://example.com)\n- [Frontend UI](http://example.com)\n- [Code to Markdown](http://example.com)\n- [Editor](http://example.com)`);
 
     const styles = {
@@ -76,4 +76,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default CodeToMark;

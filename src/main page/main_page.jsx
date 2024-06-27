@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import { FaPlus, FaLock, FaUserCircle, FaTrashAlt, FaTags } from 'react-icons/fa';
 import { IoMdNotificationsOutline } from 'react-icons/io';
-import NewNote from '../new-note/new-note';
+import CodeToMark from '../main-editor/codeandmark';
 import CollaborativeNotes from '../collaborative_notes/collaborative_notes';
 import MyNote from '../my-notes/my-notes';
 import MyTrash from '../my-trash/my-trash';
@@ -115,7 +115,7 @@ function App() {
                         <IoMdNotificationsOutline />
                     </div>
                     <div style={styles.sidebarSection}>
-                        <NavLink to="/new-note" style={({ isActive }) => ({ ...styles.sidebarItem, ...(isActive ? styles.sidebarItemSelected : {}) })}>
+                        <NavLink to="/main-editor/codeandmark" style={({ isActive }) => ({ ...styles.sidebarItem, ...(isActive ? styles.sidebarItemSelected : {}) })}>
                             <FaPlus style={styles.sidebarIcon} />
                             New Note
                         </NavLink>
