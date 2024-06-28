@@ -2,7 +2,7 @@ module.exports=exports={};
 
 exports.type="token";
 
-exports.rule=/\n(>+)\s*(.*)\r?\n/;
+exports.rule=/\n(>+)\s*(.*)/;
 
 exports.resolver=function blockQuotes(context,groups)
 {
