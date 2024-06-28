@@ -5,13 +5,13 @@ import 'codemirror/theme/dracula.css';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/addon/edit/closetag';
 import 'codemirror/addon/edit/closebrackets';
-import ACTIONS from '../../Actions.js';
+import ACTIONS from '../Actions';
 
 const Editor = ({ socketRef, roomId, onCodeChange }) => {
     const editorRef = useRef(null);
     useEffect(() => {
         async function init() {
-            editorRef.current = CodeMirror.fromTextArea(
+            editorRef.current = Codemirror.fromTextArea(
                 document.getElementById('realtimeEditor'),
                 {
                     mode: { name: 'javascript', json: true },

@@ -1,16 +1,17 @@
-import express, { static as static_ } from 'express';
-const app = express();
-import { createServer } from 'http';
-import { join } from 'path';
-import { Server } from 'socket.io';
+import express, { static as static_} from 'express';
+const app = express()
+import { createServer } from 'http'
 import ACTIONS from '../src/Actions.js';
 
-const server = createServer(app);
-const io = new Server(server);
+import { Server } from 'socket.io';
+
+const server = createServer(app)
+
+const io = new Server(server)
 
 app.use(static_('build'));
 app.use((req, res, next) => {
-    res.sendFile(join(__dirname, 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 const userSocketMap = {};
@@ -43,11 +44,11 @@ io.on('connection', (socket) => {
     });
 
     socket.on(ACTIONS.CODE_CHANGE, ({ roomId, code }) => {
-        socket.in(roomId).emit(CODE_CHANGE, { code });
+        socket.in(roomId).emit(ACTIONS.CODE_CHANGE, { code });
     });
 
     socket.on(ACTIONS.SYNC_CODE, ({ socketId, code }) => {
-        io.to(socketId).emit(CODE_CHANGE, { code });
+        io.to(socketId).emit(ACTIONS.CODE_CHANGE, { code });
     });
 
     socket.on('disconnecting', () => {
