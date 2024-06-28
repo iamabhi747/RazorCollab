@@ -103,7 +103,6 @@ function App() {
             width: '30px',
             marginRight: '10px',
         }
-
     };
 
     return (
@@ -115,7 +114,7 @@ function App() {
                         <IoMdNotificationsOutline />
                     </div>
                     <div style={styles.sidebarSection}>
-                        <NavLink to="src/main-editor-c2m/codeandmark.jsx" style={({ isActive }) => ({ ...styles.sidebarItem, ...(isActive ? styles.sidebarItemSelected : {}) })}>
+                        <NavLink to="/new-note" style={({ isActive }) => ({ ...styles.sidebarItem, ...(isActive ? styles.sidebarItemSelected : {}) })}>
                             <FaPlus style={styles.sidebarIcon} />
                             New Note
                         </NavLink>
@@ -139,7 +138,7 @@ function App() {
                 </div>
                 <div style={styles.content}>
                     <Routes>
-                        <Route path="src/main-editor-c2m/onlytext.jsx" element={<CodeAndMark />} />
+                        <Route path="/new-note" element={<CodeAndMark />} />
                         <Route path="/my-notes" element={<MyNote />} />
                         <Route path="/my-trash" element={<MyTrash />} />
                         <Route path="/collaborative-notes" element={<CollaborativeNotes />} />
@@ -149,22 +148,6 @@ function App() {
                             </div>
                         } />
                     </Routes>
-                </div>
-                <div style={styles.main}>
-                    <div style={styles.mainHeader}>
-                        <button style={styles.dropdownButton}>
-                            <FaTags style={styles.sidebarIcon} />
-                            Tags
-                        </button>
-                        <button style={styles.dropdownButton}>Layout</button>
-                    </div>
-                    <div style={styles.mainContent}>
-                        <div style={styles.welcomeMessage}>
-                            <img src="https://i.pinimg.com/564x/1e/6c/ae/1e6cae8d53ac733a14560cb87fafd068.jpg" alt="note icon" style={styles.noteIcon} />
-                            <p>Start writing and share your thoughts with a note!</p>
-                            <button style={styles.actionButton}>Create new note</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </Router>
