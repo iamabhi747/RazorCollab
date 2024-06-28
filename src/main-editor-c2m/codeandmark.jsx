@@ -1,75 +1,34 @@
 import React, { useState } from 'react';
+import { UnControlled as CodeMirror } from 'react-codemirror2';
+import 'codemirror/mode/markdown/markdown';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/dracula.css';
+import 'codemirror/addon/edit/closebrackets';
+import 'codemirror/addon/edit/closetag';
 
-
-const CodeAndMark = () => {
-    const [markdown, setMarkdown] = useState(`# **Summer Project: Overview**\n---\n<br/>\n## Development phase starts 20th June\n1. Abhi = 'Backend' + 'Code to Markdown'\n2. Atharva = 'react'\n3. Devraj = 'Editor'\n4. Pranav and Anushka = 'learning'\n---\n<br/>\n### GitHub Repo: [RazorCollab](https://github.com/iamabhi747/RazorCollab)\n---\n<br/>`);
-
-    const styles = {
-        container: {
-            display: 'flex',
-            height: '100vh',
-            fontFamily: 'Arial, sans-serif',
-            backgroundColor: '#2e2e2e',
-            color: 'white',
-        },
-        editorContainer: {
-            flex: 1,
-            padding: '10px',
-            display: 'flex',
-            flexDirection: 'column',
-        },
-        previewContainer: {
-            flex: 1,
-            padding: '10px',
-            backgroundColor: '#2e2e2e',
-            color: 'white',
-            overflowY: 'auto',
-        },
-        header: {
-            color: 'white',
-        },
-        codeMirrorWrapper: {
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-        },
-        codeMirror: {
-            flex: 1,
-            height: '100%',
-        },
-        markdownPreview: {
-            backgroundColor: '#2e2e2e',
-            color: 'white',
-        },
-    };
-
+const Editor = () => {
+    const [value, setValue] = useState();
     return (
-        <div style={styles.container}>
-            <div style={styles.editorContainer}>
-                <h2 style={styles.header}>Markdown Editor</h2>
-                <div style={styles.codeMirrorWrapper}>
-                    <reactCodemirror2.Controlled
-                        value={markdown}
-                        options={{
-                            mode: 'markdown',
-                            theme: 'material-darker',
-                            lineNumbers: true
-                        }}
-                        onBeforeChange={(editor, data, value) => {
-                            setMarkdown(value);
-                        }}
-                        style={styles.codeMirror}
-                    />
-                </div>
-            </div>
-            <div style={styles.previewContainer}>
-                <h2 style={styles.header}>Preview</h2>
-                <div style={styles.markdownPreview}>
-                    <ReactMarkdown>{markdown}</ReactMarkdown>
-                </div>
-            </div>
+        <div>
+            <CodeMirror
+                value={value}
+                options={{
+                    mode: 'markdown',
+                    theme: 'dracula',
+                    autoCloseBrackets: true,
+                    autoCloseTags: true,
+                    lineNumbers: true
+                }}
+                cursor={{
+                    line: 1,
+                    ch: 0
+                }}
+                onChange={(editor, data, value) => {
+
+                }}
+            />
         </div>
     );
 };
 
-export default CodeAndMark;
+export default Editor;

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import { FaPlus, FaLock, FaUserCircle, FaTrashAlt, FaTags } from 'react-icons/fa';
 import { IoMdNotificationsOutline } from 'react-icons/io';
-import CodeAndMark from '../main-editor-c2m/codeandmark';
+import NewNote from '../new-note/new-note';
 import CollaborativeNotes from '../collaborative_notes/collaborative_notes';
 import MyNote from '../my-notes/my-notes';
 import MyTrash from '../my-trash/my-trash';
@@ -138,7 +138,7 @@ function App() {
                 </div>
                 <div style={styles.content}>
                     <Routes>
-                        <Route path="/new-note" element={<CodeAndMark />} />
+                        <Route path="/new-note" element={<NewNote />} />
                         <Route path="/my-notes" element={<MyNote />} />
                         <Route path="/my-trash" element={<MyTrash />} />
                         <Route path="/collaborative-notes" element={<CollaborativeNotes />} />
