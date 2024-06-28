@@ -10,10 +10,11 @@ window.onload = () => {
 
     let css = `
     .c2m {
-        background-color: #515151;
-        color: white;
+        background-color: #27272A;
+        color: #EBECED;
         margin: 0;
-        padding: 10px 20px;
+        padding: 10px 15px;
+        font-family: Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol;
     }
     `;
 
