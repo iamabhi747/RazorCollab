@@ -37,6 +37,16 @@ function EditorPage() {
             margin: '0',
             fontcolor: '#4aed88',
         },
+        buttonGroup: {
+            padding: '10px',
+            borderRadius: '5px',
+            outline: 'none',
+            border: 'none',
+            backgroundColor: '#4aed88',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+            marginLeft: '10px',
+        },
     };
     return (
         <div style={styles.mainWrap}>
@@ -58,7 +68,9 @@ function EditorPage() {
                     </div>
 
                 </div>
-                <button></button>
+                <button style={styles.buttonGroup}>Home</button>
+                <button style={styles.buttonGroup}>New Note</button>
+
             </div>
             <div style={styles.editor}>
                 editor goes here...
