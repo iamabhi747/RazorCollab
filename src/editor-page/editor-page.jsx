@@ -8,7 +8,8 @@ function EditorPage() {
     ]);
     const styles = {
         mainWrap: {
-            display: 'flex',
+            display: 'grid',
+            gridTemplateColumns: '250px 1fr',
             height: '100vh',
             fontFamily: 'Arial, sans-serif',
         },
@@ -26,6 +27,13 @@ function EditorPage() {
             justifyContent: 'space-between',
             marginBottom: '20px',
         },
+        clientlist: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            marginBottom: '20px',
+        },
         editor: {
             flexGrow: 1,
             padding: '20px',
@@ -36,6 +44,7 @@ function EditorPage() {
             fontSize: '1.5em',
             margin: '0',
             fontcolor: '#4aed88',
+            bottomBorder: '1px solid #424242',
         },
         buttonGroup: {
             padding: '10px',
