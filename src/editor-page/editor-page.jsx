@@ -4,7 +4,7 @@ import Avatar from 'react-avatar';
 function EditorPage() {
     const [clients, setClients] = useState([{ id: 1, name: 'Atharva Kavade' }
         , { id: 2, name: 'Devraj Lokhande' }
-        , { id: 3, name: 'Abhinandan Bhuse' }
+        , { id: 3, name: 'Abhinandan Bhuse' },
     ]);
     const styles = {
         mainWrap: {
@@ -52,7 +52,7 @@ function EditorPage() {
                 flex: 1,
                 padding: '20px',
             },
-        };
+        }
     };
     return (
         <div style={styles.mainWrap}>
