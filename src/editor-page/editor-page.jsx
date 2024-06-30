@@ -8,54 +8,51 @@ function EditorPage() {
     ]);
     const styles = {
         mainWrap: {
-            display: 'grid',
-            gridTemplateColumns: '250px 1fr',
+            display: 'flex',
             height: '100vh',
-            fontFamily: 'Arial, sans-serif',
         },
         aside: {
-            width: '250px',
-            backgroundColor: '#2e2e2e',
-            color: '#fff',
             display: 'flex',
             flexDirection: 'column',
-            padding: '10px',
+            alignItems: 'center',
+            padding: '20px',
+            backgroundColor: '#f0f0f0',
+            width: '250px',
         },
         asideinner: {
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            marginBottom: '20px',
-        },
-        clientlist: {
-            display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            flexWrap: 'wrap',
-            marginBottom: '20px',
-        },
-        editor: {
-            flexGrow: 1,
-            padding: '20px',
-            backgroundColor: '#333',
-            color: '#fff',
-        },
-        logo: {
-            fontSize: '1.5em',
-            margin: '0',
-            fontcolor: '#4aed88',
-            bottomBorder: '1px solid #424242',
-        },
-        buttonGroup: {
-            padding: '10px',
-            borderRadius: '5px',
-            outline: 'none',
-            border: 'none',
-            backgroundColor: '#4aed88',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            marginLeft: '10px',
-        },
+            width: '100%',
+            logo: {
+                marginBottom: '20px',
+            },
+            clientlist: {
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            },
+            client: {
+                display: 'flex',
+                alignItems: 'center',
+                marginBottom: '10px',
+            },
+            buttonGroup: {
+                outline: 'none',
+                border: 'none',
+                backgroundColor: '#4aed88',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                marginLeft: '10px',
+                marginTop: '10px',
+
+            },
+            editor: {
+                flex: 1,
+                padding: '20px',
+            },
+        };
     };
     return (
         <div style={styles.mainWrap}>
